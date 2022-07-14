@@ -17,8 +17,6 @@ parser.add_argument('-w', '--words',
                     default=100
                     )
 
-args = parser.parse_args()
-
 
 def build_dict(words):
     data = {}
@@ -66,6 +64,7 @@ def create_text(original_text, total_words_len):
 
 
 if __name__ == '__main__':
+    args = parser.parse_args()
     original_text = ''
     with open(args.input) as fin:
         original_text = fin.read()
@@ -73,7 +72,6 @@ if __name__ == '__main__':
     final_text = create_text(original_text, int(args.words))
 
     if args.output is None:
-        print(" === HERE'S YOUR POTERY ===")
         print(final_text)
     else:
         with open(args.output, 'w') as fout:
